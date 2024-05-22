@@ -39,3 +39,20 @@ ${CANONICAL_PATH}/create_development_cubrid.sh hina209 209
 ${CANONICAL_PATH}/create_development_cubrid.sh ilhansong210 210
 ${CANONICAL_PATH}/create_development_cubrid.sh ilhansong211 211
 ${CANONICAL_PATH}/create_development_cubrid.sh ilhansong212 212
+
+# jmwon
+${CANONICAL_PATH}/create_development_cubrid.sh jmwon213 213
+${CANONICAL_PATH}/create_development_cubrid.sh jmwon214 214
+${CANONICAL_PATH}/create_development_cubrid.sh jmwon215 215
+
+# dhkim
+${CANONICAL_PATH}/create_development_cubrid.sh dhkim216 216
+${CANONICAL_PATH}/create_development_cubrid.sh dhkim217 217
+${CANONICAL_PATH}/create_development_cubrid.sh dhkim218 218
+
+# ykham
+${CANONICAL_PATH}/create_development_cubrid.sh ykham219 219
+${CANONICAL_PATH}/create_development_cubrid.sh ykham220 220
+${CANONICAL_PATH}/create_development_cubrid.sh ykham221 221
+
+
