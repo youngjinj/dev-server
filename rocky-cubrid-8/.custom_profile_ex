@@ -1,0 +1,121 @@
+#!/bin/bash
+
+alias vi=vim
+# alias build_cubrid="cubrid service stop; ./build.sh -t 64 -m debug -p ${HOME}/CUBRID build"
+alias build_cubrid="cubrid service stop; ./build.sh -t 64 -m debug -g ninja -p ${HOME}/CUBRID build"
+alias build_cubrid_release="cubrid service stop; ./build.sh -t 64 -m release -g ninja -p ${HOME}/CUBRID build"
+alias build_cubrid_release_dist="cubrid service stop; ./build.sh -t 64 -m release -g ninja -p ${HOME}/CUBRID -z tarball build dist"
+alias ninja_cubrid="cubrid service stop; cd build_x86_64_debug && ninja && ninja install && cd .."
+alias ninja_cubrid_release="cubrid service stop; cd build_x86_64_release && ninja && ninja install && cd .."
+
+# Getting Started
+TEMP_PATH=${HOME}/github/getting-started/bin
+
+if [ -d "${HOME}/github/getting-started/bin" ]; then
+        # Length of string is non-zero.
+        if [ -n "${PATH}" ]; then
+                if [ `echo ${PATH} | grep ${TEMP_PATH} | wc -l` == 0 ]; then
+                        PATH=${TEMP_PATH}:${PATH}
+                fi
+        # Length of string is zero.
+        else
+                PATH=${TEMP_PATH}
+        fi
+
+        export PATH
+fi
+
+export PATH
+
+# CUBRID
+if [ -e ${HOME}/cubrid.sh ] && [ -e `readlink -f ${HOME}/cubrid.sh` ]; then
+        source ${HOME}/cubrid.sh
+fi
+
+CUBRID_MSG_LANG=en_US.utf8
+export CUBRID_MSG_LANG
+
+# CTP (CUBRID Test Program)
+CTP_HOME=${HOME}/github/cubrid-testtools/CTP
+init_path=${HOME}/CTP/shell/init_path
+
+TEMP_PATH=${CTP_HOME}/bin:${CTP_HOME}/common/script
+
+# Length of string is non-zero.
+if [ -n "${PATH}" ]; then
+        if [ `echo ${PATH} | grep ${TEMP_PATH} | wc -l` == 0 ]; then
+                PATH=${TEMP_PATH}:${PATH}
+        fi
+# Length of string is zero.
+else
+        PATH=${TEMP_PATH}
+fi
+
+export CTP_HOME
+export init_path
+export PATH
+
+# RQG (Random Query Generator)
+RQG_HOME=${HOME}/github/cubrid-testtools-internal/random_query_generator
+
+export RQG_HOME
+
+# Oracle Instant Client
+ORACLE_HOME=/home/youngjinj/install/instantclient_19_18
+TNS_ADMIN=${ORACLE_HOME}/network/admin
+TEMP_PATH=${ORACLE_HOME}
+TEMP_LD_LIBRARY_PATH=${ORACLE_HOME}
+
+# Length of string is non-zero.
+if [ -n "${PATH}" ]; then
+        if [ `echo ${PATH} | grep ${TEMP_PATH} | wc -l` == 0 ]; then
+                PATH=${TEMP_PATH}:${PATH}
+        fi
+# Length of string is zero.
+else
+        PATH=${TEMP_PATH}
+fi
+
+# Length of string is non-zero.
+if [ -n "${LD_LIBRARY_PATH}" ]; then
+        if [ `echo ${LD_LIBRARY_PATH} | grep ${TEMP_LD_LIBRARY_PATH} | wc -l` == 0 ]; then
+                LD_LIBRARY_PATH=${TEMP_LD_LIBRARY_PATH}:${LD_LIBRARY_PATH}
+        fi
+# Length of string is zero.
+else
+        LD_LIBRARY_PATH=${TEMP_LD_LIBRARY_PATH}
+fi
+
+export ORACLE_HOME
+export TNS_ADMIN
+export PATH
+export LD_LIBRARY_PATH
+
+# unixODBC
+UNIXODBC_HOME=/home/youngjinj/install/unixODBC
+TEMP_PATH=${UNIXODBC_HOME}/bin
+TEMP_LD_LIBRARY_PATH=${UNIXODBC_HOME}/lib
+
+# Length of string is non-zero.
+if [ -n "${PATH}" ]; then
+        if [ `echo ${PATH} | grep ${TEMP_PATH} | wc -l` == 0 ]; then
+                PATH=${TEMP_PATH}:${PATH}
+        fi
+# Length of string is zero.
+else
+        PATH=${TEMP_PATH}
+fi
+
+# Length of string is non-zero.
+if [ -n "${LD_LIBRARY_PATH}" ]; then
+        if [ `echo ${LD_LIBRARY_PATH} | grep ${TEMP_LD_LIBRARY_PATH} | wc -l` == 0 ]; then
+                LD_LIBRARY_PATH=${TEMP_LD_LIBRARY_PATH}:${LD_LIBRARY_PATH}
+        fi
+# Length of string is zero.
+else
+        LD_LIBRARY_PATH=${TEMP_LD_LIBRARY_PATH}
+fi
+
+export UNIXODBC_HOME
+export PATH
+export LD_LIBRARY_PATH
