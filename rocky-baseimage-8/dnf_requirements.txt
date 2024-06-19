@@ -7,6 +7,7 @@ cscope
 dos2unix
 expect
 git-all
+glibc-langpack-ko
 indent
 java-1.8.0-openjdk-devel
 java-11-openjdk-devel
@@ -29,3 +30,4 @@ sudo
 systemtap-sdt-devel
 unixODBC-devel
 vim-enhanced
+wget

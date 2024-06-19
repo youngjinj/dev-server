@@ -119,3 +119,35 @@ fi
 export UNIXODBC_HOME
 export PATH
 export LD_LIBRARY_PATH
+
+# PostgreSQL
+PATH=/home/youngjinj/pgsql/bin:${PATH}
+TEMP_LD_LIBRARY_PATH=/home/youngjinj/pgsql/lib
+
+# Length of string is non-zero.
+if [ -n "${LD_LIBRARY_PATH}" ]; then
+        if [ `echo ${LD_LIBRARY_PATH} | grep ${TEMP_LD_LIBRARY_PATH} | wc -l` == 0 ]; then
+                LD_LIBRARY_PATH=${TEMP_LD_LIBRARY_PATH}:${LD_LIBRARY_PATH}
+        fi
+# Length of string is zero.
+else
+        LD_LIBRARY_PATH=${TEMP_LD_LIBRARY_PATH}
+fi
+
+export PATH
+export LD_LIBRARY_PATH
+
+# install
+TEMP_PATH=/home/cubrid/install/bin
+
+# Length of string is non-zero.
+if [ -n "${PATH}" ]; then
+        if [ `echo ${PATH} | grep ${TEMP_PATH} | wc -l` == 0 ]; then
+                PATH=${TEMP_PATH}:${PATH}
+        fi
+# Length of string is zero.
+else
+        PATH=${TEMP_PATH}
+fi
+
+export PATH
